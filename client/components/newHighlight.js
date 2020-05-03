@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import CommentForm from './commentForm'
+// import CommentForm from './commentForm'
 
 export default class NewHighlighter extends Component {
   constructor(props) {
@@ -43,19 +43,19 @@ export default class NewHighlighter extends Component {
     )
   }
   render() {
-    if (!this.state.selection) {
+    // if (!this.state.selection) {
+    //   return (
+    //     <span onMouseUp={this.onMouseUpHandler}>
+    //       <div>{this.state.text}</div>
+    //     </span>
+    //   )
+    // } else {
       return (
         <span onMouseUp={this.onMouseUpHandler}>
           <div>{this.state.text}</div>
+          {/* <CommentForm /> */}
         </span>
       )
-    } else {
-      return (
-        <span onMouseUp={this.onMouseUpHandler}>
-          <div>{this.state.text}</div>
-          <CommentForm />
-        </span>
-      )
-    }
+    // }
   }
 }

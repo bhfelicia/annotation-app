@@ -3,6 +3,8 @@
  * This way, we can import all of our components from the same place, rather than
  * having to figure out which file they belong to!
  */
+export {default as CommentForm} from './commentForm'
+export {default as Comment} from './Comment'
 export {default as PassageView} from './passageView'
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'

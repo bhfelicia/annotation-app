@@ -40,9 +40,11 @@
   firebase.initializeApp(firebaseConfig);
   // firebase.analytics();
     const preObject = document.getElementById("object")
-
-  const dbRefObject = firebase.database().ref().child("object")
-  dbRefObject.on('value', snap => console.log(snap.val()))
+  const dataBase = firebase.database()
+  const dbRefObject = dataBase.ref().child("object")
+  dbRefObject.on('value', snap => {
+    preObject.innerText = JSON.stringify(snap.val(), null, 3)
+  })
 </script>
    <!-- <script defer src="/__/firebase/init.js"></script> -->
   </body>

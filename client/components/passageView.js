@@ -5,6 +5,7 @@ import {text} from '../sampleText'
 let newText = text.split('\n').map((item, i) => {
   return <p key={i}>{item}</p>
 })
+// import dataBase from '../../public/ind'
 
 export default class PassageView extends React.Component {
   constructor() {
@@ -16,11 +17,14 @@ export default class PassageView extends React.Component {
   }
   render() {
     return (
+      <div>
       <NewHighlight
         text={newText}
         selectionHandler={this.selectionHandler}
         customClass="custom-class"
       />
+      <CommentForm />
+      </div>
     )
   }
 }

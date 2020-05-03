@@ -1,5 +1,7 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import Comment from './Comment'
+// import {connect} from 'react-redux'
+
 
 export default class CommentForm extends React.Component {
   constructor() {
@@ -11,6 +13,7 @@ export default class CommentForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleChange(event) {
+    console.log('inside handleChange, state is: ', this.state)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -20,8 +23,17 @@ export default class CommentForm extends React.Component {
     const formData = {
       comment: this.state.comment
     }
+    this.setState(formData)
   }
   render() {
+    console.log('state within render: ', this.state)
+    if(this.state.formData) {
+      return (
+        <div>
+        <Comment comment={this.state.comment} />
+        </div>
+      )
+    } else {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -32,6 +44,11 @@ export default class CommentForm extends React.Component {
         />
         <button type="submit">Submit Comment</button>
       </form>
-    )
+    )}
   }
 }
+
+// const mapState = state => {
+//   return {comment: state.comment}
+// }
+

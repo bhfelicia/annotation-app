@@ -1,3 +1,12 @@
+// var admin = require("firebase-admin");
+
+// var serviceAccount = require("/Users/felicia/Downloads/annotation-app-b603e-firebase-adminsdk-fmtdz-c9fff2b9be.json");
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: "https://annotation-app-b603e.firebaseio.com"
+// });
+
 // (function() {
 //   const firebaseConfig = {
 //     apiKey: "AIzaSyDWkkNnXdo-eabpOuug7Mn7bGCDjQv-Yn8",
