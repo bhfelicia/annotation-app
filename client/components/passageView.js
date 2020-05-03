@@ -5,6 +5,9 @@ import React from 'react'
 import NewHighlight from './newHighlight'
 import CommentForm from './commentForm'
 import {text} from '../sampleText'
+let newText = text.split('\n').map((item, i) => {
+  return <p key={i}>{item}</p>
+})
 
 export default class PassageView extends React.Component {
   constructor() {
@@ -17,7 +20,7 @@ export default class PassageView extends React.Component {
   render() {
     return (
       <NewHighlight
-        text={text}
+        text={newText}
         selectionHandler={this.selectionHandler}
         customClass="custom-class"
       />

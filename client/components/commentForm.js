@@ -8,7 +8,7 @@ export default class CommentForm extends React.Component {
       comment: ''
     }
   }
-  handleChange(evt) {
+  handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -22,12 +22,12 @@ export default class CommentForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="comment"
-            onChange={this.handleChange}
-            value={this.state.comment}
-          />
+        <input
+          type="text"
+          name="comment"
+          onChange={this.handleChange}
+          value={this.state.comment}
+        />
         <button type="submit">Submit Comment</button>
       </form>
     )
