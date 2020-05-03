@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import CommentForm from './commentForm'
 
 export default class NewHighlighter extends Component {
   constructor(props) {
@@ -34,17 +35,28 @@ export default class NewHighlighter extends Component {
         selectionStart
       })
     }
+    this.setState({selection})
     anchorNode.parentNode.innerHTML = this.highlight(
       anchorNode.parentNode.innerHTML,
       selectionStart,
       selection.length
     )
+    return <CommentForm />
   }
   render() {
-    return (
-      <span onMouseUp={this.onMouseUpHandler}>
-        <div>{this.state.text}</div>
-      </span>
-    )
+    if (!this.state.selection.length) {
+      return (
+        <span onMouseUp={this.onMouseUpHandler}>
+          <div>{this.state.text}</div>
+        </span>
+      )
+    } else {
+      return (
+        <span onMouseUp={this.onMouseUpHandler}>
+          <div>{this.state.text}</div>
+          <CommentForm />
+        </span>
+      )
+    }
   }
 }

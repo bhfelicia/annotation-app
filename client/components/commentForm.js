@@ -2,11 +2,13 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 export default class CommentForm extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       comment: ''
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleChange(event) {
     this.setState({
