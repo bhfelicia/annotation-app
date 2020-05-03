@@ -41,10 +41,9 @@ export default class NewHighlighter extends Component {
       selectionStart,
       selection.length
     )
-    return <CommentForm />
   }
   render() {
-    if (!this.state.selection.length) {
+    if (!this.state.selection) {
       return (
         <span onMouseUp={this.onMouseUpHandler}>
           <div>{this.state.text}</div>
