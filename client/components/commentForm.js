@@ -1,39 +1,27 @@
-import React from 'react'
-import Comment from './Comment'
-// import {connect} from 'react-redux'
+import React from "react";
+import { createComment } from "../store/comment";
+import { connect } from "react-redux";
 
-
-export default class CommentForm extends React.Component {
+export class CommentForm extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      comment: ''
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+      comment: ""
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event) {
-    console.log('inside handleChange, state is: ', this.state)
     this.setState({
       [event.target.name]: event.target.value
-    })
+    });
   }
   handleSubmit(evt) {
-    evt.preventDefault()
-    const formData = {
-      comment: this.state.comment
-    }
-    this.setState(formData)
+    evt.preventDefault();
+    this.props.createComment(this.state.comment);
+    this.setState({ comment: "" });
   }
   render() {
-    console.log('state within render: ', this.state)
-    if(this.state.formData) {
-      return (
-        <div>
-        <Comment comment={this.state.comment} />
-        </div>
-      )
-    } else {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -44,11 +32,14 @@ export default class CommentForm extends React.Component {
         />
         <button type="submit">Submit Comment</button>
       </form>
-    )}
+    );
   }
 }
 
-// const mapState = state => {
-//   return {comment: state.comment}
-// }
+const mapDispatch = dispatch => {
+  return {
+    createComment: comment => dispatch(createComment(comment))
+  };
+};
 
+export default connect(null, mapDispatch)(CommentForm);
