@@ -25,12 +25,16 @@ export class CommentForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
+          className="field"
           type="text"
           name="comment"
           onChange={this.handleChange}
           value={this.state.comment}
         />
-        <button type="submit">Submit Comment</button>
+        <br />
+        <button type="submit" className="button">
+          Submit Comment
+        </button>
       </form>
     );
   }

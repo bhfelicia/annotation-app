@@ -23,3 +23,17 @@ form div {
 .custom-class {
   background-color: #ffff00;
 }
+
+.field {
+  width: 50%;
+  height: 56px;
+  border-radius: 4px;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: 0.3s all;
+  overflow-wrap: break-word;
+}
+
+.button {
+  width: 25%;
+}
