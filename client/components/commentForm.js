@@ -1,25 +1,25 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React from "react";
+import { createComment } from "../store/comment";
+import { connect } from "react-redux";
 
-export default class CommentForm extends React.Component {
+export class CommentForm extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      comment: ''
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+      comment: ""
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
-    })
+    });
   }
   handleSubmit(evt) {
-    evt.preventDefault()
-    const formData = {
-      comment: this.state.comment
-    }
+    evt.preventDefault();
+    this.props.createComment(this.state.comment);
+    this.setState({ comment: "" });
   }
   render() {
     return (
@@ -32,6 +32,14 @@ export default class CommentForm extends React.Component {
         />
         <button type="submit">Submit Comment</button>
       </form>
-    )
+    );
   }
 }
+
+const mapDispatch = dispatch => {
+  return {
+    createComment: comment => dispatch(createComment(comment))
+  };
+};
+
+export default connect(null, mapDispatch)(CommentForm);
