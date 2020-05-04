@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+let num = 0;
 export default class NewHighlighter extends Component {
   constructor(props) {
     super(props);
@@ -14,10 +14,13 @@ export default class NewHighlighter extends Component {
   }
 
   highlight(str, start, length) {
+    num += 1;
     const partial = [str.slice(start, Number(start) + length)];
     const front = [`<span>${str.slice(0, start)}</span>`];
     const back = [`<span>${str.slice(Number(start) + length)}</span>`];
-    const toInsert = `<span class=${this.props.customClass}>${partial}</span>`;
+    const toInsert = `<span class=${
+      this.props.customClass
+    }>${partial}</span><sup>${num}</sup>`;
     return [front, back].join(toInsert);
   }
   onMouseUpHandler(evt) {
